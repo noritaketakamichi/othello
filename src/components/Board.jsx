@@ -16,14 +16,12 @@ export default function Board(props) {
 
 	return (
 		<>
-			{/* <p>{array}</p> */}
 			<div className="flame">
 				<div className="board">
 					{array.map((arr) => {
 						return<BoardElem arr={arr}/>
 					})}
 				</div>
-				{/* </div> */}
 			</div>
 		</>
 	);
