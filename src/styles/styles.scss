@@ -1,0 +1,87 @@
+.board {
+    position: absolute;
+    background-color: green;
+    left: 10vh;
+    top: 10vh;
+    width: 80vh;
+    height: 80vh;
+    border: 3px solid black;
+}
+
+.line {
+    position: absolute;
+    border-bottom: 3px solid black;
+    border-right: 3px solid black;
+    left: 0vh;
+    top: 0vh;
+}
+
+.h-One {
+    width: 80vh;
+    height: 10vh;
+}
+
+.h-Two {
+    width: 80vh;
+    height: 20vh;
+}
+
+.h-Three {
+    width: 80vh;
+    height: 30vh;
+}
+
+.h-Four {
+    width: 80vh;
+    height: 40vh;
+}
+
+.h-Five {
+    width: 80vh;
+    height: 50vh;
+}
+
+.h-Six {
+    width: 80vh;
+    height: 60vh;
+}
+
+.h-Seven {
+    width: 80vh;
+    height: 70vh;
+}
+
+.v-One {
+    height: 80vh;
+    width: 10vh;
+}
+
+.v-Two {
+    height: 80vh;
+    width: 20vh;
+}
+
+.v-Three {
+    height: 80vh;
+    width: 30vh;
+}
+
+.v-Four {
+    height: 80vh;
+    width: 40vh;
+}
+
+.v-Five {
+    height: 80vh;
+    width: 50vh;
+}
+
+.v-Six {
+    height: 80vh;
+    width: 60vh;
+}
+
+.v-Seven {
+    height: 80vh;
+    width: 70vh;
+}
