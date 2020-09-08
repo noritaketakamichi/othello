@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import '../styles/styles.scss';
 
 export default function BoardElem(props) {
-
+    //オセロ盤の横長長方形のコンポーネントである
     const array=props.arr;
 
     const clicked=(e)=>{

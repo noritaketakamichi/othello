@@ -1,6 +1,5 @@
 .board {
     position: absolute;
-    background-color: green;
     left: 10vh;
     top: 10vh;
     width: 80vh;
@@ -18,10 +17,10 @@
 
 .eachboard {
     position: absolute;
+    background-color: green;
     border: 1px solid black;
     height: 12.5%;
     width: 12.5%;
-    z-index: 100;
 }
 
 .xposition0 {
@@ -86,4 +85,20 @@
 
 .yposition7 {
     top: 87.5%;
+}
+
+.eachstone {
+    position: absolute;
+    border-radius: 50%;
+    height: 12.5%;
+    width: 12.5%;
+    z-index: 30;
+}
+
+.conditionw {
+    background-color: white;
+}
+
+.conditionb {
+    background-color: black;
 }
