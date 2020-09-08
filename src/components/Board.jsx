@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from 'react';
+import BoardElem from './BoardElem';
 import '../styles/styles.scss';
 
-export default function Board() {
+export default function Board(props) {
+	// const [stones, setStones] = useState([]);
+
+	const arr = [1, 2, 3];
+	const array = [];
+	for (let row = 0; row < 8; row += 1) {
+		array.push([]);
+		for (let col = 0; col < 8; col += 1) {
+			array[row].push([row,col]);
+		}
+	}
 
 	return (
-		<div className="flame">
-		<div className="board">
-			<div className="h-One line"></div>
-			<div className="h-Two line"></div>
-			<div className="h-Three line"></div>
-			<div className="h-Four line"></div>
-			<div className="h-Five line"></div>
-			<div className="h-Six line"></div>
-			<div className="h-Seven line"></div>
-
-            <div className="v-One line"></div>
-            <div className="v-Two line"></div>
-            <div className="v-Three line"></div>
-            <div className="v-Four line"></div>
-            <div className="v-Five line"></div>
-            <div className="v-Six line"></div>
-            <div className="v-Seven line"></div>
-
-
-		</div>
-		</div>
+		<>
+			{/* <p>{array}</p> */}
+			<div className="flame">
+				<div className="board">
+					{array.map((arr) => {
+						return<BoardElem arr={arr}/>
+					})}
+				</div>
+				{/* </div> */}
+			</div>
+		</>
 	);
 }

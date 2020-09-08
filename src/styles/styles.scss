@@ -16,72 +16,73 @@
     top: 0vh;
 }
 
-.h-One {
-    width: 80vh;
-    height: 10vh;
+.eachboard {
+    position: absolute;
+    border: 1px solid black;
+    height: 12.5%;
+    width: 12.5%;
 }
 
-.h-Two {
-    width: 80vh;
-    height: 20vh;
+.xposition1 {
+    left: 0%;
 }
 
-.h-Three {
-    width: 80vh;
-    height: 30vh;
+.xposition2 {
+    left: 12.5%;
 }
 
-.h-Four {
-    width: 80vh;
-    height: 40vh;
+.xposition3 {
+    left: 25%;
 }
 
-.h-Five {
-    width: 80vh;
-    height: 50vh;
+.xposition4 {
+    left: 37.5%;
 }
 
-.h-Six {
-    width: 80vh;
-    height: 60vh;
+.xposition5 {
+    left: 50%;
 }
 
-.h-Seven {
-    width: 80vh;
-    height: 70vh;
+.xposition6 {
+    left: 62.5%;
 }
 
-.v-One {
-    height: 80vh;
-    width: 10vh;
+.xposition7 {
+    left: 75%;
 }
 
-.v-Two {
-    height: 80vh;
-    width: 20vh;
+.xposition8 {
+    left: 87.5%;
 }
 
-.v-Three {
-    height: 80vh;
-    width: 30vh;
+.yposition1 {
+    top: 0%;
 }
 
-.v-Four {
-    height: 80vh;
-    width: 40vh;
+.yposition2 {
+    top: 12.5%;
 }
 
-.v-Five {
-    height: 80vh;
-    width: 50vh;
+.yposition3 {
+    top: 25%;
 }
 
-.v-Six {
-    height: 80vh;
-    width: 60vh;
+.yposition4 {
+    top: 37.5%;
 }
 
-.v-Seven {
-    height: 80vh;
-    width: 70vh;
+.yposition5 {
+    top: 50%;
+}
+
+.yposition6 {
+    top: 62.5%;
+}
+
+.yposition7 {
+    top: 75%;
+}
+
+.yposition8 {
+    top: 87.5%;
 }
