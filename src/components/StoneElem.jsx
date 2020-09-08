@@ -15,7 +15,7 @@ export default function StoneElem(props) {
 		const positionArr = [Number(classArr[1].slice(-1)), Number(classArr[2].slice(-1))];
 		console.log(positionArr);
 		console.log(condition);
-		calcCondition();
+		console.log(calcCondition(positionArr,condition));
 	};
 
 	return (
