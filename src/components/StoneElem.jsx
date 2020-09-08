@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import '../styles/styles.scss';
+import { calcCondition } from '../calculate.js';
 
 export default function StoneElem(props) {
 	//オセロ盤の横長長方形のコンポーネントである
 	const array = props.arr;
+	const condition = props.condition;
 
 	const clicked = (e) => {
 		const classArr = e.target.className.split(' ');
@@ -12,6 +14,8 @@ export default function StoneElem(props) {
 		//位置の配列
 		const positionArr = [Number(classArr[1].slice(-1)), Number(classArr[2].slice(-1))];
 		console.log(positionArr);
+		console.log(condition);
+		calcCondition();
 	};
 
 	return (

@@ -9,7 +9,7 @@ export default function Stone(props) {
 		<div className="flame">
 			<div className="board">
 				{array.map((arr) => {
-					return <StoneElem arr={arr} />;
+					return <StoneElem arr={arr} condition={array}/>;
 				})}
 			</div>
 		</div>
