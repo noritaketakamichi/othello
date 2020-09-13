@@ -257,7 +257,7 @@ export function calcCondition(position, condition) {
     if (xPos >= 2 && yPos <= 5) {
         let xSearch = xPos;
         let ySearch = yPos;
-        while (xSearch <= 6 && ySearch <= 6 && (!flag)) {
+        while (xSearch >= 1 && ySearch <= 6 && (!flag)) {
             if (condition[xSearch - 1][ySearch + 1][2] == "-") {
                 //左下に何もない時
                 flag = true;
