@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Board from './Board';
 import Stone from './Stone';
-// import '../styles/styles.scss';
+import Guide from './Guide';
+import '../styles/styles.scss';
 
 export default function App() {
 	const array = [];
@@ -54,6 +55,7 @@ export default function App() {
 				count={count}
 				setCount={setCount}
 			/>
+			<Guide count={count}/>
 		</div>
 	);
 }

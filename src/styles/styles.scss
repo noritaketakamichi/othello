@@ -1,6 +1,6 @@
 .board {
     position: absolute;
-    left: 10vh;
+    left: 5vh;
     top: 10vh;
     width: 80vh;
     height: 80vh;
@@ -106,3 +106,31 @@
 }
 
 .condition- {}
+
+.guide {
+    position: absolute;
+    left: 50vw;
+    top: 30vh;
+    width: 10vh;
+    height: 20vh;
+    writing-mode: vertical-rl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.guideText {
+    font-size: 30px;
+}
+
+.guideBlack {
+    background-color: black;
+    color: white;
+    border: 3px solid black;
+}
+
+.guideWhite {
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+}
