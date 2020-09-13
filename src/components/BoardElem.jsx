@@ -9,6 +9,7 @@ export default function BoardElem(props) {
 
 	const clicked = (e) => {
 		const classArr = e.target.className.split(' ');
+		console.log("------------------");
 
 		let stoneColor;
 		if(props.stones.length%2==0){
@@ -23,10 +24,10 @@ export default function BoardElem(props) {
 		const newCondition = calcCondition(positionArr, props.condition);
 		if (newCondition) {
 			//set new condition
-			props.setCondition(newCondition);
+			props.setCondition(newCondition[0]);
 
 			//add stone
-			props.setStones([...props.stones, positionArr]);
+			props.setStones([...props.stones, positionArr,...newCondition[1]]);
 		}
 	};
 

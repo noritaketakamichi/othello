@@ -21,10 +21,10 @@ export default function App() {
 			}
 		}
 
-		array[3][3][2] = 'w';
-		array[3][4][2] = 'b';
-		array[4][3][2] = 'b';
-		array[4][4][2] = 'w';
+		array[3][3][2] = 'b';
+		array[3][4][2] = 'w';
+		array[4][3][2] = 'w';
+		array[4][4][2] = 'b';
 		return array;
 	};
 
