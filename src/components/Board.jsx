@@ -5,17 +5,16 @@ import '../styles/styles.scss';
 export default function Board(props) {
 	// const [clickPosition, setClickPosition] = useState([]);
 
-	const array=props.array;
+	// const array=props.array;
+
+	console.log(props.condition);
 
 	return (
 		<>
-			<div className="flame">
-				<div className="board">
-					{array.map((arr) => {
-						return<BoardElem arr={arr} condition={array}/>
+					{props.condition.map((arr) => {
+						console.log(111);
+						return<BoardElem arr={arr} condition={props.condition} setCondition={props.setCondition} stones={props.stones} setStones={props.setStones}/>
 					})}
-				</div>
-			</div>
 		</>
 	);
 }

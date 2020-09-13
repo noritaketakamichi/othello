@@ -4,7 +4,6 @@ import Stone from './Stone';
 // import '../styles/styles.scss';
 
 export default function App() {
-
 	const array = [];
 	for (let row = 0; row < 8; row += 1) {
 		array.push([]);
@@ -12,7 +11,7 @@ export default function App() {
 			array[row].push([row, col, '-']);
 		}
 	}
-	
+
 	const setInitialCondition = function () {
 		const array = [];
 		for (let row = 0; row < 8; row += 1) {
@@ -29,17 +28,23 @@ export default function App() {
 		return array;
 	};
 
-	
 	useEffect(() => {
-		setCondition(setInitialCondition())
+		setCondition(setInitialCondition());
 	}, []);
 
 	const [condition, setCondition] = useState(array);
 
+	const [stones, setStones] = useState([
+		[3, 3, 'b'],
+		[3, 4, 'w'],
+		[4, 4, 'b'],
+		[4, 3, 'w'],
+	]);
+
 	return (
-		<>
-			<Board array={condition} />
-			<Stone array={condition} />
-		</>
+		<div className="board">
+			<Stone condition={condition} stones={stones} setCondition={setCondition} />
+			<Board condition={condition} setCondition={setCondition} stones={stones} setStones={setStones}/>
+		</div>
 	);
 }
