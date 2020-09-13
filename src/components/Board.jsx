@@ -11,10 +11,19 @@ export default function Board(props) {
 
 	return (
 		<>
-					{props.condition.map((arr) => {
-						console.log(111);
-						return<BoardElem arr={arr} condition={props.condition} setCondition={props.setCondition} stones={props.stones} setStones={props.setStones}/>
-					})}
+			{props.condition.map((arr) => {
+				return (
+					<BoardElem
+						arr={arr}
+						condition={props.condition}
+						setCondition={props.setCondition}
+						stones={props.stones}
+						setStones={props.setStones}
+						count={props.count}
+						setCount={props.setCount}
+					/>
+				);
+			})}
 		</>
 	);
 }

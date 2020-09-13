@@ -12,7 +12,7 @@ export default function BoardElem(props) {
 		console.log("------------------");
 
 		let stoneColor;
-		if(props.stones.length%2==0){
+		if(props.count%2==0){
 			stoneColor="b"
 		}else{
 			stoneColor="w"
@@ -27,7 +27,9 @@ export default function BoardElem(props) {
 			props.setCondition(newCondition[0]);
 
 			//add stone
-			props.setStones([...props.stones, positionArr,...newCondition[1]]);
+			props.setStones([...props.stones,...newCondition[1]]);
+
+			props.setCount(props.count+1)
 		}
 	};
 

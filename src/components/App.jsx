@@ -41,10 +41,19 @@ export default function App() {
 		[4, 3, 'w'],
 	]);
 
+	const [count, setCount] = useState(0);
+
 	return (
 		<div className="board">
 			<Stone condition={condition} stones={stones} setCondition={setCondition} />
-			<Board condition={condition} setCondition={setCondition} stones={stones} setStones={setStones}/>
+			<Board
+				condition={condition}
+				setCondition={setCondition}
+				stones={stones}
+				setStones={setStones}
+				count={count}
+				setCount={setCount}
+			/>
 		</div>
 	);
 }
