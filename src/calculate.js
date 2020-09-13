@@ -148,10 +148,140 @@ export function calcCondition(position, condition) {
         }
     }
 
+    //フラグをリセット
+    flag = false;
+
 
 
     //ななめ（右上、右下、左下、左上）
+    //左上
+    if (xPos >= 2 && yPos >= 2) {
+        let xSearch = xPos;
+        let ySearch = yPos;
+        while (xSearch >= 1 && ySearch >= 1 && (!flag)) {
+            if (condition[xSearch - 1][ySearch - 1][2] == "-") {
+                //左隣に何もない時
+                flag = true;
+                storeArr = [];
+            } else if (condition[xSearch - 1][ySearch - 1][2] == stoneColor) {
+                //左隣が置いた石と同じ色の時
+                if (storeArr.length >= 1) {
+                    //一時保存用に石がある時
+                    //ひっくり返すリストに追加
+                    changeStoneList = [...changeStoneList, ...storeArr];
+                    puttable = true;
+                    storeArr = [];
+                }
+                flag = true;
 
+            } else {
+                //左隣が異なる色の時
+                //一時保存に追加
+                storeArr.push([xSearch - 1, ySearch - 1, stoneColor]);
+            }
+            xSearch--;
+            ySearch--;
+        }
+    }
+
+    //フラグをリセット
+    flag = false;
+
+    //右上
+    if (xPos <= 5 && yPos >= 2) {
+        let xSearch = xPos;
+        let ySearch = yPos;
+        while (xSearch <= 6 && ySearch >= 1 && (!flag)) {
+            if (condition[xSearch + 1][ySearch - 1][2] == "-") {
+                //右上に何もない時
+                flag = true;
+                storeArr = [];
+            } else if (condition[xSearch + 1][ySearch - 1][2] == stoneColor) {
+                //右上が置いた石と同じ色の時
+                if (storeArr.length >= 1) {
+                    //一時保存用に石がある時
+                    //ひっくり返すリストに追加
+                    changeStoneList = [...changeStoneList, ...storeArr];
+                    puttable = true;
+                    storeArr = [];
+                }
+                flag = true;
+
+            } else {
+                //右上が異なる色の時
+                //一時保存に追加
+                storeArr.push([xSearch + 1, ySearch - 1, stoneColor]);
+            }
+            xSearch++;
+            ySearch--;
+        }
+    }
+
+    //フラグをリセット
+    flag = false;
+
+    //右下
+    if (xPos <= 5 && yPos <= 5) {
+        let xSearch = xPos;
+        let ySearch = yPos;
+        while (xSearch <= 6 && ySearch <= 6 && (!flag)) {
+            if (condition[xSearch + 1][ySearch + 1][2] == "-") {
+                //右上に何もない時
+                flag = true;
+                storeArr = [];
+            } else if (condition[xSearch + 1][ySearch + 1][2] == stoneColor) {
+                //右上が置いた石と同じ色の時
+                if (storeArr.length >= 1) {
+                    //一時保存用に石がある時
+                    //ひっくり返すリストに追加
+                    changeStoneList = [...changeStoneList, ...storeArr];
+                    puttable = true;
+                    storeArr = [];
+                }
+                flag = true;
+
+            } else {
+                //右上が異なる色の時
+                //一時保存に追加
+                storeArr.push([xSearch + 1, ySearch + 1, stoneColor]);
+            }
+            xSearch++;
+            ySearch++;
+        }
+    }
+
+    //フラグをリセット
+    flag = false;
+
+    //左下
+    if (xPos >= 2 && yPos <= 5) {
+        let xSearch = xPos;
+        let ySearch = yPos;
+        while (xSearch <= 6 && ySearch <= 6 && (!flag)) {
+            if (condition[xSearch - 1][ySearch + 1][2] == "-") {
+                //左下に何もない時
+                flag = true;
+                storeArr = [];
+            } else if (condition[xSearch - 1][ySearch + 1][2] == stoneColor) {
+                //左下が置いた石と同じ色の時
+                if (storeArr.length >= 1) {
+                    //一時保存用に石がある時
+                    //ひっくり返すリストに追加
+                    changeStoneList = [...changeStoneList, ...storeArr];
+                    puttable = true;
+                    storeArr = [];
+                }
+                flag = true;
+
+            } else {
+                //左下が異なる色の時
+                //一時保存に追加
+                storeArr.push([xSearch - 1, ySearch + 1, stoneColor]);
+            }
+            xSearch--;
+            ySearch++;
+        }
+    }
 
     if (!puttable) {
         //置ける位置ではない時false返す
