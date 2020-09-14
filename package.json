@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "start": "node server",
+        "start": "yarn build && node server/index.js",
         "hack:client": "react-scripts start",
         "build": "react-scripts build"
     },
