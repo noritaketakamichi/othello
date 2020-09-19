@@ -1,11 +1,14 @@
-const express = require("express");
-const path = require("path");
+const app = require("./app");
 
-const app = express();
-app.use(express.static(path.resolve(__dirname, "dist")));
+const PORT = process.env.PORT || 5000;
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    // eslint-disable-next-line
-    console.log(`Server up and listening on port ${port}`);
-});
+(async() => {
+    try {
+
+        console.log("Starting express");
+        app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
+    } catch (err) {
+        console.error("Error starting app!", err);
+        process.exit(-1);
+    }
+})();

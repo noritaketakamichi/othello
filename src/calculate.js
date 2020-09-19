@@ -1,12 +1,14 @@
 //石が置ける位置かどうかを判定し
-//置ける場合、置いた後のconditionを返すï
+//置ける場合、置いた後のconditionを返す
 export function calcCondition(position, condition) {
 
     const xPos = position[0];
     const yPos = position[1];
     const stoneColor = position[2]
 
+    console.log([xPos, yPos]);
     console.log(stoneColor);
+    console.log(condition);
 
     //すでに石がある場合false
     if (condition[xPos][yPos][2] != "-") {

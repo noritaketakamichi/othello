@@ -33,6 +33,7 @@ export default function App() {
 		setCondition(setInitialCondition());
 	}, []);
 
+	//番の石の状況
 	const [condition, setCondition] = useState(array);
 
 	const [stones, setStones] = useState([
