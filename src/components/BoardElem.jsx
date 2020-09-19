@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import Board from './Board';
 import classNames from 'classnames';
 import '../styles/styles.scss';
 import { calcCondition } from '../calculate.js';
 import { cpuCalc } from '../cpuCalc.js';
+import {useOthello} from './App';
 
 export default function BoardElem(props) {
 	//オセロ盤の横長長方形のコンポーネントである
+
+	const {count,setCount,condition,setCondition,stones,setStones} = useOthello();
 
 	const clicked = (e) => {
 		const classArr = e.target.className.split(' ');
@@ -15,7 +18,7 @@ export default function BoardElem(props) {
 		//CPUが計算する必要がある場合フラグが立つ
 		let flag = false;
 		let stoneColor;
-		if (props.count % 2 == 0) {
+		if (count % 2 == 0) {
 			stoneColor = 'b';
 			flag = true;
 		} else {
@@ -27,18 +30,18 @@ export default function BoardElem(props) {
 
 		console.log('pppppppppppppppppp');
 		console.log(positionArr);
-		console.log(props.condition);
+		console.log(condition);
 
 		//[新しい状況の配列、ひっくり返す石リスト]
-		const newCondition = calcCondition(positionArr, props.condition);
+		const newCondition = calcCondition(positionArr, condition);
 		if (newCondition) {
 			//set new condition
-			props.setCondition(newCondition[0]);
+			setCondition(newCondition[0]);
 
 			//add stone
-			props.setStones([...props.stones, ...newCondition[1]]);
+			setStones([...stones, ...newCondition[1]]);
 
-			props.setCount(props.count + 1);
+			setCount(count + 1);
 
 
 			if (flag) {

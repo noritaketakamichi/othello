@@ -1,27 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import BoardElem from './BoardElem';
 import '../styles/styles.scss';
+import {useOthello} from './App';
 
 export default function Board(props) {
 	// const [clickPosition, setClickPosition] = useState([]);
 
 	// const array=props.array;
 
-	console.log(props.condition);
+	const {condition} = useOthello();
+
+	console.log(condition);
 
 	return (
 		<>
-			{props.condition.map((arr,index) => {
+			{condition.map((arr,index) => {
 				return (
 					<BoardElem
 						yPos={index}
 						arr={arr}
-						condition={props.condition}
-						setCondition={props.setCondition}
-						stones={props.stones}
-						setStones={props.setStones}
-						count={props.count}
-						setCount={props.setCount}
 					/>
 				);
 			})}

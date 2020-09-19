@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Board from './Board';
 import Stone from './Stone';
 import Guide from './Guide';
+// import OthelloContext from '../OthelloContext';
 import '../styles/styles.scss';
+// import { OthelloContext } from '../../othelloContext';
+
+const OthelloContext = React.createContext();
+export const useOthello= () => useContext(OthelloContext)
 
 export default function App() {
 	//盤の石の状況
@@ -27,18 +32,17 @@ export default function App() {
 
 	const [count, setCount] = useState(0);
 
+	// const [state, setState, error, loading, setPokemonId, pokemonId] = useContext(
+	// 	PokedexContext
+	//   );
+
 	return (
 		<div className="board">
-			<Stone condition={condition} stones={stones} setCondition={setCondition} />
-			<Board
-				condition={condition}
-				setCondition={setCondition}
-				stones={stones}
-				setStones={setStones}
-				count={count}
-				setCount={setCount}
-			/>
-			<Guide count={count} />
+			<OthelloContext.Provider value={{condition, setCondition, stones, setStones, count, setCount}}>
+				<Stone />
+				<Board />
+				<Guide />
+			</OthelloContext.Provider>
 		</div>
 	);
 }

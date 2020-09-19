@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import classNames from 'classnames';
 import '../styles/styles.scss';
+import {useOthello} from './App';
 
 export default function Stone(props) {
 	// const array = props.array;
-
+	const {stones} = useOthello();
 
 
 	return (
 		<>
-			{props.stones.map((stone) => {
+			{stones.map((stone) => {
 				const xposition = `xposition${stone[0]}`;
 				const yposition = `yposition${stone[1]}`;
 				const condition = `condition${stone[2]}`;
