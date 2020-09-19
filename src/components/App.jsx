@@ -5,42 +5,24 @@ import Guide from './Guide';
 import '../styles/styles.scss';
 
 export default function App() {
-	const array = [];
-	for (let row = 0; row < 8; row += 1) {
-		array.push([]);
-		for (let col = 0; col < 8; col += 1) {
-			array[row].push([row, col, '-']);
-		}
-	}
+	//盤の石の状況
+	const [condition, setCondition] = useState([
+		['-', '-', '-', '-', '-', '-', '-', '-'],
+		['-', '-', '-', '-', '-', '-', '-', '-'],
+		['-', '-', '-', '-', '-', '-', '-', '-'],
+		['-', '-', '-', 'b', 'w', '-', '-', '-'],
+		['-', '-', '-', 'w', 'b', '-', '-', '-'],
+		['-', '-', '-', '-', '-', '-', '-', '-'],
+		['-', '-', '-', '-', '-', '-', '-', '-'],
+		['-', '-', '-', '-', '-', '-', '-', '-'],
+	]);
 
-	const setInitialCondition = function () {
-		const array = [];
-		for (let row = 0; row < 8; row += 1) {
-			array.push([]);
-			for (let col = 0; col < 8; col += 1) {
-				array[row].push([row, col, '-']);
-			}
-		}
-
-		array[3][3][2] = 'b';
-		array[3][4][2] = 'w';
-		array[4][3][2] = 'w';
-		array[4][4][2] = 'b';
-		return array;
-	};
-
-	useEffect(() => {
-		setCondition(setInitialCondition());
-	}, []);
-
-	//番の石の状況
-	const [condition, setCondition] = useState(array);
-
+	//置いた石のリスト[x,y,色,何手目]
 	const [stones, setStones] = useState([
-		[3, 3, 'b'],
-		[3, 4, 'w'],
-		[4, 4, 'b'],
-		[4, 3, 'w'],
+		[3, 3, 'b', 0],
+		[3, 4, 'w', 0],
+		[4, 4, 'b', 0],
+		[4, 3, 'w', 0],
 	]);
 
 	const [count, setCount] = useState(0);
@@ -56,7 +38,7 @@ export default function App() {
 				count={count}
 				setCount={setCount}
 			/>
-			<Guide count={count}/>
+			<Guide count={count} />
 		</div>
 	);
 }

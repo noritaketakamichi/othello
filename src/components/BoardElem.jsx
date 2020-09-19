@@ -53,10 +53,9 @@ export default function BoardElem(props) {
 
 	return (
 		<>
-			{props.arr.map((elm) => {
-				const xposition = `xposition${elm[0]}`;
-				const yposition = `yposition${elm[1]}`;
-				const id = `${elm[0]}${elm[1]}`;
+			{props.arr.map((elm,index) => {
+				const xposition = `xposition${index}`;
+				const yposition = `yposition${props.yPos}`;
 				return <div className={classNames('eachboard', xposition, yposition)} onClick={clicked}></div>;
 			})}
 		</>

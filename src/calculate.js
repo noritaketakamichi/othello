@@ -11,7 +11,7 @@ export function calcCondition(position, condition) {
     console.log(condition);
 
     //すでに石がある場合false
-    if (condition[xPos][yPos][2] != "-") {
+    if (condition[xPos][yPos] != "-") {
         return false;
     }
 
@@ -32,11 +32,11 @@ export function calcCondition(position, condition) {
     if (xPos >= 2) {
         let search = xPos;
         while (search >= 1 && (!flag)) {
-            if (condition[search - 1][yPos][2] == "-") {
+            if (condition[search - 1][yPos] == "-") {
                 //左隣に何もない時
                 flag = true;
                 storeArr = [];
-            } else if (condition[search - 1][yPos][2] == stoneColor) {
+            } else if (condition[search - 1][yPos] == stoneColor) {
                 //左隣が置いた石と同じ色の時
                 if (storeArr.length >= 1) {
                     //一時保存用に石がある時
@@ -64,11 +64,11 @@ export function calcCondition(position, condition) {
     if (xPos <= 5) {
         let search = xPos;
         while (search <= 6 && (!flag)) {
-            if (condition[search + 1][yPos][2] == "-") {
+            if (condition[search + 1][yPos] == "-") {
                 //右隣に何もない時
                 flag = true;
                 storeArr = [];
-            } else if (condition[search + 1][yPos][2] == stoneColor) {
+            } else if (condition[search + 1][yPos] == stoneColor) {
                 //右隣が置いた石と同じ色の時
                 if (storeArr.length >= 1) {
                     //一時保存用に石がある時
@@ -95,11 +95,11 @@ export function calcCondition(position, condition) {
     if (yPos >= 2) {
         let search = yPos;
         while (search >= 1 && (!flag)) {
-            if (condition[xPos][search - 1][2] == "-") {
+            if (condition[xPos][search - 1] == "-") {
                 //左隣に何もない時
                 flag = true;
                 storeArr = [];
-            } else if (condition[xPos][search - 1][2] == stoneColor) {
+            } else if (condition[xPos][search - 1] == stoneColor) {
                 //左隣が置いた石と同じ色の時
                 if (storeArr.length >= 1) {
                     //一時保存用に石がある時
@@ -126,11 +126,11 @@ export function calcCondition(position, condition) {
     if (yPos <= 5) {
         let search = yPos;
         while (search <= 6 && (!flag)) {
-            if (condition[xPos][search + 1][2] == "-") {
+            if (condition[xPos][search + 1] == "-") {
                 //下に何もない時
                 flag = true;
                 storeArr = [];
-            } else if (condition[xPos][search + 1][2] == stoneColor) {
+            } else if (condition[xPos][search + 1] == stoneColor) {
                 //下が置いた石と同じ色の時
                 if (storeArr.length >= 1) {
                     //一時保存用に石がある時
@@ -161,11 +161,11 @@ export function calcCondition(position, condition) {
         let xSearch = xPos;
         let ySearch = yPos;
         while (xSearch >= 1 && ySearch >= 1 && (!flag)) {
-            if (condition[xSearch - 1][ySearch - 1][2] == "-") {
+            if (condition[xSearch - 1][ySearch - 1] == "-") {
                 //左隣に何もない時
                 flag = true;
                 storeArr = [];
-            } else if (condition[xSearch - 1][ySearch - 1][2] == stoneColor) {
+            } else if (condition[xSearch - 1][ySearch - 1] == stoneColor) {
                 //左隣が置いた石と同じ色の時
                 if (storeArr.length >= 1) {
                     //一時保存用に石がある時
@@ -194,11 +194,11 @@ export function calcCondition(position, condition) {
         let xSearch = xPos;
         let ySearch = yPos;
         while (xSearch <= 6 && ySearch >= 1 && (!flag)) {
-            if (condition[xSearch + 1][ySearch - 1][2] == "-") {
+            if (condition[xSearch + 1][ySearch - 1] == "-") {
                 //右上に何もない時
                 flag = true;
                 storeArr = [];
-            } else if (condition[xSearch + 1][ySearch - 1][2] == stoneColor) {
+            } else if (condition[xSearch + 1][ySearch - 1] == stoneColor) {
                 //右上が置いた石と同じ色の時
                 if (storeArr.length >= 1) {
                     //一時保存用に石がある時
@@ -227,11 +227,11 @@ export function calcCondition(position, condition) {
         let xSearch = xPos;
         let ySearch = yPos;
         while (xSearch <= 6 && ySearch <= 6 && (!flag)) {
-            if (condition[xSearch + 1][ySearch + 1][2] == "-") {
+            if (condition[xSearch + 1][ySearch + 1] == "-") {
                 //右上に何もない時
                 flag = true;
                 storeArr = [];
-            } else if (condition[xSearch + 1][ySearch + 1][2] == stoneColor) {
+            } else if (condition[xSearch + 1][ySearch + 1] == stoneColor) {
                 //右上が置いた石と同じ色の時
                 if (storeArr.length >= 1) {
                     //一時保存用に石がある時
@@ -260,11 +260,11 @@ export function calcCondition(position, condition) {
         let xSearch = xPos;
         let ySearch = yPos;
         while (xSearch >= 1 && ySearch <= 6 && (!flag)) {
-            if (condition[xSearch - 1][ySearch + 1][2] == "-") {
+            if (condition[xSearch - 1][ySearch + 1] == "-") {
                 //左下に何もない時
                 flag = true;
                 storeArr = [];
-            } else if (condition[xSearch - 1][ySearch + 1][2] == stoneColor) {
+            } else if (condition[xSearch - 1][ySearch + 1] == stoneColor) {
                 //左下が置いた石と同じ色の時
                 if (storeArr.length >= 1) {
                     //一時保存用に石がある時
@@ -297,7 +297,7 @@ export function calcCondition(position, condition) {
 
     for (let pos of changeStoneList) {
         //ひっくり返す石
-        condition[pos[0]][pos[1]][2] = stoneColor;
+        condition[pos[0]][pos[1]] = stoneColor;
     }
 
     return [condition, changeStoneList];

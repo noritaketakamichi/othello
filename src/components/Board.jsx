@@ -11,9 +11,10 @@ export default function Board(props) {
 
 	return (
 		<>
-			{props.condition.map((arr) => {
+			{props.condition.map((arr,index) => {
 				return (
 					<BoardElem
+						yPos={index}
 						arr={arr}
 						condition={props.condition}
 						setCondition={props.setCondition}
