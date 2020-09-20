@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import '../styles/styles.scss';
 import {useOthello} from './App';

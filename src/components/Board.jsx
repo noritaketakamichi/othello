@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React from 'react';
 import BoardElem from './BoardElem';
 import '../styles/styles.scss';
 import {useOthello} from './App';

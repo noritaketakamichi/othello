@@ -1,11 +1,12 @@
 {
     "name": "othello",
     "version": "0.1.0",
-    "proxy": "http://localhost:5000",
+    "proxy": "http://localhost:5000/",
     "private": true,
     "scripts": {
         "start": "node server && yarn build",
-        "server": "nodemon server",
+        "server": "node server",
+        "dev": "nodemon server",
         "hack:client": "react-scripts start",
         "build": "react-scripts build",
         "lint": "eslint --fix --ext .js .",

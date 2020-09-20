@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, {  useState, useContext } from 'react';
 import Board from './Board';
 import Stone from './Stone';
 import Guide from './Guide';

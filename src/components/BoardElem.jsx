@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
-import Board from './Board';
+import React from 'react';
 import classNames from 'classnames';
 import '../styles/styles.scss';
 // import { calcCondition } from '../calculate.js';
@@ -19,7 +18,7 @@ export default function BoardElem(props) {
 		//CPUが計算する必要がある場合フラグが立つ
 		let flag = false;
 		let stoneColor;
-		if (count % 2 == 0) {
+		if (count % 2 === 0) {
 			stoneColor = 'b';
 			flag = true;
 		} else {
@@ -51,19 +50,14 @@ export default function BoardElem(props) {
 				.post('api/auto/', { condition: newCondition.condition, color: "w" })
 
 				const puttableArray = resApiAuto.data.positionList;
-				console.log('puttable');
-				console.log(puttableArray);
 
 				//次の一手をランダムに計算
 				const nextPosition=puttableArray[Math.floor(Math.random()*puttableArray.length)];
-				console.log(nextPosition);
 
 				//ランダムに選んだ手を打つ
 				const resApiNextCondition = await axios
 				.post('api/condition/', { condition: newCondition.condition, position: [...nextPosition,"w"] })
 
-
-				console.log(resApiNextCondition.data.condition);
 				setCondition(resApiNextCondition.data.condition);
 
 				//add stone

@@ -1,15 +1,16 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
+
 const expect = chai.expect;
 chai.use(chaiHttp);
 chai.should();
-const { setupServer } = require("../server/app");
+const app = require("../server/app");
 
-const server = setupServer();
+// const server = setupServer();
 describe("calcCondition", () => {
     let request;
     beforeEach(() => {
-        request = chai.request(server);
+        request = chai.request(app);
     });
 
     it("false pattern1", async() => {
@@ -156,7 +157,7 @@ describe("calcCondition", () => {
 describe("cpuCalc", () => {
     let request;
     beforeEach(() => {
-        request = chai.request(server);
+        request = chai.request(app);
     });
 
     it("2nd put", async() => {
