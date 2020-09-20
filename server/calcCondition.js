@@ -1,6 +1,6 @@
 //石が置ける位置かどうかを判定し
 //置ける場合、置いた後のconditionを返す
-export function calcCondition(position, condition) {
+const calcCondition = (position, condition) => {
 
     const xPos = position[0];
     const yPos = position[1];
@@ -12,6 +12,7 @@ export function calcCondition(position, condition) {
 
     //すでに石がある場合false
     if (condition[xPos][yPos] != "-") {
+
         return false;
     }
 
@@ -300,5 +301,7 @@ export function calcCondition(position, condition) {
         condition[pos[0]][pos[1]] = stoneColor;
     }
 
-    return [condition, changeStoneList];
+    return { "condition": condition, "changeStoneList": changeStoneList };
 }
+
+module.exports = { calcCondition };

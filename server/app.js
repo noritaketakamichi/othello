@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
+const { calcCondition } = require("./calcCondition");
 
 const setupServer = () => {
     app.use(express.json());
@@ -9,8 +10,13 @@ const setupServer = () => {
      */
     // Return pokemon data
     app.get("/api/condition", (req, res) => {
+        console.log(1111111)
+        const position = req.body.position;
+        const condition = req.body.condition;
+        const result = calcCondition(position, condition)
 
-        res.json({ "a": "b" });
+        res.json(result);
+
 
     });
 
