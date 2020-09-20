@@ -4,7 +4,7 @@
     "proxy": "http://localhost:5000",
     "private": true,
     "scripts": {
-        "start": "yarn build && node server",
+        "start": "node server && yarn build",
         "server": "nodemon server",
         "hack:client": "react-scripts start",
         "build": "react-scripts build",
