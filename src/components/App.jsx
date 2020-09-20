@@ -64,7 +64,7 @@ export default function App() {
 			<OthelloContext.Provider value={{ condition, setCondition, stones, setStones, count, setCount }}>
 				<Stone />
 				<Board />
-				<Guide />
+				{/* <Guide /> */}
 			</OthelloContext.Provider>
 		</div>
 	);
