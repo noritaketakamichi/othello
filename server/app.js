@@ -9,11 +9,13 @@ const setupServer = () => {
      * Create, set up and return your express server, split things into separate files if it becomes too long!
      */
     // Return pokemon data
-    app.get("/api/condition", (req, res) => {
-        console.log(1111111)
+    app.post("/api/condition/", (req, res) => {
+        console.log(222222222)
+        console.log(req.body)
         const position = req.body.position;
         const condition = req.body.condition;
-        const result = calcCondition(position, condition)
+        const result = calcCondition(position, condition);
+        console.log(result)
 
         res.json(result);
 

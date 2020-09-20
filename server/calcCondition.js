@@ -52,7 +52,7 @@ const calcCondition = (position, condition) => {
                 //左隣が異なる色の時
                 //一時保存に追加
                 storeArr.push([search - 1, yPos, stoneColor]);
-                console.log(999999);
+
             }
             search--;
         }
@@ -300,6 +300,8 @@ const calcCondition = (position, condition) => {
         //ひっくり返す石
         condition[pos[0]][pos[1]] = stoneColor;
     }
+
+    console.log(999999);
 
     return { "condition": condition, "changeStoneList": changeStoneList };
 }

@@ -1,17 +1,18 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Board from './Board';
 import classNames from 'classnames';
 import '../styles/styles.scss';
-import { calcCondition } from '../calculate.js';
-import { cpuCalc } from '../cpuCalc.js';
-import {useOthello} from './App';
+// import { calcCondition } from '../calculate.js';
+// import { cpuCalc } from '../cpuCalc.js';
+import { useOthello } from './App';
+import axios from 'axios';
 
 export default function BoardElem(props) {
 	//オセロ盤の横長長方形のコンポーネントである
 
-	const {count,setCount,condition,setCondition,stones,setStones} = useOthello();
+	const { count, setCount, condition, setCondition, stones, setStones } = useOthello();
 
-	const clicked = (e) => {
+	const clicked = async (e) => {
 		const classArr = e.target.className.split(' ');
 		console.log('------------------');
 
@@ -33,16 +34,22 @@ export default function BoardElem(props) {
 		console.log(condition);
 
 		//[新しい状況の配列、ひっくり返す石リスト]
-		const newCondition = calcCondition(positionArr, condition);
+		// const newCondition = calcCondition(positionArr, condition);
+
+		// const res = await axios.get('api/condition/',{ condition: condition, position: positionArr })
+		const res = await axios
+			.post('api/condition/', { condition: condition, position: positionArr })
+
+		const newCondition = res.data;
+		console.log(newCondition);
 		if (newCondition) {
 			//set new condition
-			setCondition(newCondition[0]);
+			setCondition(newCondition.condition);
 
 			//add stone
-			setStones([...stones, ...newCondition[1]]);
+			setStones([...stones, ...newCondition.changeStoneList]);
 
 			setCount(count + 1);
-
 
 			if (flag) {
 				//白盤はCPU
@@ -56,7 +63,7 @@ export default function BoardElem(props) {
 
 	return (
 		<>
-			{props.arr.map((elm,index) => {
+			{props.arr.map((elm, index) => {
 				const xposition = `xposition${index}`;
 				const yposition = `yposition${props.yPos}`;
 				return <div className={classNames('eachboard', xposition, yposition)} onClick={clicked}></div>;
