@@ -1,4 +1,4 @@
-import React, {  useState, useContext } from 'react';
+import React, {  useEffect,useState, useContext } from 'react';
 import Board from './Board';
 import Stone from './Stone';
 import Guide from './Guide';
@@ -32,9 +32,31 @@ export default function App() {
 
 	const [count, setCount] = useState(0);
 
-	// const [state, setState, error, loading, setPokemonId, pokemonId] = useContext(
-	// 	PokedexContext
-	//   );
+	useEffect(
+		() => {
+			//終了時に計算
+		  if(count===60){
+			  let blackStones=0;
+			  for(let array of condition){
+				  for(let elm of array){
+					  if(elm==="b"){
+						blackStones++;
+					  }
+				  }
+			  }
+			  let message;
+			  if(blackStones>32){
+				message="You win!!"
+			  }else if(blackStones===32){
+				message="Draw!!"
+			  }else{
+				message="You lose!!"
+			  }
+			  alert(`black:${blackStones},white:${64-blackStones}   ${message}`);
+		  }
+		},
+		[count],
+	  );
 
 	return (
 		<div className="board">
