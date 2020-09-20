@@ -29,34 +29,49 @@ export default function BoardElem(props) {
 		//位置の配列&石の色
 		const positionArr = [Number(classArr[1].slice(-1)), Number(classArr[2].slice(-1)), stoneColor];
 
-		console.log('pppppppppppppppppp');
-		console.log(positionArr);
-		console.log(condition);
-
-		//[新しい状況の配列、ひっくり返す石リスト]
-		// const newCondition = calcCondition(positionArr, condition);
-
-		// const res = await axios.get('api/condition/',{ condition: condition, position: positionArr })
-		const res = await axios
+		const resApiCondition = await axios
 			.post('api/condition/', { condition: condition, position: positionArr })
 
-		const newCondition = res.data;
+		const newCondition = resApiCondition.data;
 		console.log(newCondition);
 		if (newCondition) {
 			//set new condition
 			setCondition(newCondition.condition);
 
 			//add stone
-			setStones([...stones, ...newCondition.changeStoneList]);
+			const stoneList=[...stones, ...newCondition.changeStoneList]
+			setStones(stoneList);
 
 			setCount(count + 1);
 
 			if (flag) {
 				//白盤はCPU
 				//置ける位置一覧
-				// const puttableArray = cpuCalc(newCondition[0]);
-				// console.log('puttable');
-				// console.log(puttableArray);
+				const resApiAuto = await axios
+				.post('api/auto/', { condition: newCondition.condition, color: "w" })
+
+				const puttableArray = resApiAuto.data.positionList;
+				console.log('puttable');
+				console.log(puttableArray);
+
+				//次の一手をランダムに計算
+				const nextPosition=puttableArray[Math.floor(Math.random()*puttableArray.length)];
+				console.log(nextPosition);
+
+				//ランダムに選んだ手を打つ
+				const resApiNextCondition = await axios
+				.post('api/condition/', { condition: newCondition.condition, position: [...nextPosition,"w"] })
+
+
+				console.log(resApiNextCondition.data.condition);
+				setCondition(resApiNextCondition.data.condition);
+
+				//add stone
+				const NextStoneList=[...stones, ...newCondition.changeStoneList,...resApiNextCondition.data.changeStoneList];
+				setStones(NextStoneList);
+	
+				setCount(count + 2);
+
 			}
 		}
 	};
