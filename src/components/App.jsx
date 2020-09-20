@@ -1,4 +1,4 @@
-import React, {  useEffect,useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Board from './Board';
 import Stone from './Stone';
 import Guide from './Guide';
@@ -7,7 +7,7 @@ import '../styles/styles.scss';
 // import { OthelloContext } from '../../othelloContext';
 
 const OthelloContext = React.createContext();
-export const useOthello= () => useContext(OthelloContext)
+export const useOthello = () => useContext(OthelloContext);
 
 export default function App() {
 	//盤の石の状況
@@ -32,35 +32,36 @@ export default function App() {
 
 	const [count, setCount] = useState(0);
 
-	useEffect(
-		() => {
-			//終了時に計算
-		  if(count===60){
-			  let blackStones=0;
-			  for(let array of condition){
-				  for(let elm of array){
-					  if(elm==="b"){
+	useEffect(() => {
+		//終了時に計算
+		const ShowResult = () => {
+			let blackStones = 0;
+			for (let array of condition) {
+				for (let elm of array) {
+					if (elm === 'b') {
 						blackStones++;
-					  }
-				  }
-			  }
-			  let message;
-			  if(blackStones>32){
-				message="You win!!"
-			  }else if(blackStones===32){
-				message="Draw!!"
-			  }else{
-				message="You lose!!"
-			  }
-			  alert(`black:${blackStones},white:${64-blackStones}   ${message}`);
-		  }
-		},
-		[count],
-	  );
+					} else if (elm === '-') {
+						//空きコマがあったら中止
+						return;
+					}
+				}
+			}
+			let message;
+			if (blackStones > 32) {
+				message = 'You win!!';
+			} else if (blackStones === 32) {
+				message = 'Draw!!';
+			} else {
+				message = 'You lose!!';
+			}
+			alert(`black:${blackStones},white:${64 - blackStones}   ${message}`);
+		};
+		ShowResult();
+	}, [condition]);
 
 	return (
 		<div className="board">
-			<OthelloContext.Provider value={{condition, setCondition, stones, setStones, count, setCount}}>
+			<OthelloContext.Provider value={{ condition, setCondition, stones, setStones, count, setCount }}>
 				<Stone />
 				<Board />
 				<Guide />
