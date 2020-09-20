@@ -5,13 +5,8 @@ chai.use(chaiHttp);
 chai.should();
 const { setupServer } = require("../server/app");
 
-/*
- * This sprint you will have to create all tests yourself, TDD style.
- * For this you will want to get familiar with chai-http https://www.chaijs.com/plugins/chai-http/
- * The same kind of structure that you encountered in lecture.express will be provided here.
- */
 const server = setupServer();
-describe("othello api", () => {
+describe("calcCondition", () => {
     let request;
     beforeEach(() => {
         request = chai.request(server);
@@ -30,7 +25,7 @@ describe("othello api", () => {
         ];
         const position = [3, 3, "b"];
 
-        const res = await request.get("/api/condition").send({ condition: condition, position: position });
+        const res = await request.post("/api/condition").send({ condition: condition, position: position });
         expect(res.body).to.equal(false);
     });
 
@@ -47,7 +42,24 @@ describe("othello api", () => {
         ];
         const position = [4, 1, "b"];
 
-        const res = await request.get("/api/condition").send({ condition: condition, position: position });
+        const res = await request.post("/api/condition").send({ condition: condition, position: position });
+        expect(res.body).to.equal(false);
+    });
+
+    it("false pattern3", async() => {
+        const condition = [
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', 'b', 'w', '-', '-', '-'],
+            ['-', '-', 'b', 'b', 'b', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+        ];
+        const position = [5, 1, "w"];
+
+        const res = await request.post("/api/condition").send({ condition: condition, position: position });
         expect(res.body).to.equal(false);
     });
 
@@ -80,7 +92,7 @@ describe("othello api", () => {
             [4, 3, "b"]
         ]
 
-        const res = await request.get("/api/condition").send({ condition: condition, position: position });
+        const res = await request.post("/api/condition").send({ condition: condition, position: position });
 
 
         //盤面の状況の比較
@@ -125,7 +137,7 @@ describe("othello api", () => {
             [4, 3, "w"]
         ]
 
-        const res = await request.get("/api/condition").send({ condition: condition, position: position });
+        const res = await request.post("/api/condition").send({ condition: condition, position: position });
 
         //盤面の状況の比較
         expect(res.body.condition).to.deep.equal(AfterCondition);
@@ -139,4 +151,61 @@ describe("othello api", () => {
             expect(stringActualChangeStoneList).to.contain(JSON.stringify(elm));
         }
     });
+});
+
+describe("cpuCalc", () => {
+    let request;
+    beforeEach(() => {
+        request = chai.request(server);
+    });
+
+    it("2nd put", async() => {
+        const condition = [
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', 'b', 'w', '-', '-', '-'],
+            ['-', '-', 'b', 'b', 'b', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+        ];
+        const color = "w";
+
+        const ExpectedPositionList = [
+            [3, 2],
+            [5, 2],
+            [5, 4]
+        ]
+
+        console.log(11111111111);
+        const res = await request.post("/api/auto").send({ condition: condition, color: color });
+
+        expect(JSON.stringify(res.body.positionList)).to.equal(JSON.stringify(ExpectedPositionList));
+    });
+
+    it("4th put", async() => {
+        const condition = [
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', 'b', 'w', '-', '-', '-'],
+            ['-', '-', 'b', 'b', 'b', '-', '-', '-'],
+            ['-', '-', 'w', 'b', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+            ['-', '-', '-', '-', '-', '-', '-', '-'],
+        ];
+        const color = "w";
+
+        const ExpectedPositionList = [
+            [3, 2],
+            [5, 4]
+        ]
+
+        console.log(11111111111);
+        const res = await request.post("/api/auto").send({ condition: condition, color: color });
+
+        expect(JSON.stringify(res.body.positionList)).to.equal(JSON.stringify(ExpectedPositionList));
+    });
+
 });

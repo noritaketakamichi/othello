@@ -6,9 +6,9 @@ const calcCondition = (position, condition) => {
     const yPos = position[1];
     const stoneColor = position[2]
 
-    console.log([xPos, yPos]);
-    console.log(stoneColor);
-    console.log(condition);
+    // console.log([xPos, yPos]);
+    // console.log(stoneColor);
+    // console.log(condition);
 
     //すでに石がある場合false
     if (condition[xPos][yPos] != "-") {
@@ -300,8 +300,6 @@ const calcCondition = (position, condition) => {
         //ひっくり返す石
         condition[pos[0]][pos[1]] = stoneColor;
     }
-
-    console.log(999999);
 
     return { "condition": condition, "changeStoneList": changeStoneList };
 }
