@@ -10,8 +10,6 @@ export default function Board(props) {
 
 	const {condition} = useOthello();
 
-	console.log(condition);
-
 	return (
 		<>
 			{condition.map((arr,index) => {

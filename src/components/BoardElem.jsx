@@ -36,6 +36,7 @@ export default function BoardElem(props) {
 		if (newCondition) {
 			//set new condition
 			setCondition(newCondition.condition);
+			console.log(newCondition.condition);
 
 			//add stone
 			const stoneList=[...stones, ...newCondition.changeStoneList]
@@ -59,6 +60,7 @@ export default function BoardElem(props) {
 				.post('api/condition/', { condition: newCondition.condition, position: [...nextPosition,"w"] })
 
 				setCondition(resApiNextCondition.data.condition);
+				console.log(resApiNextCondition.data.condition);
 
 				//add stone
 				const NextStoneList=[...stones, ...newCondition.changeStoneList,...resApiNextCondition.data.changeStoneList];
